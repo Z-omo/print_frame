@@ -1,0 +1,19 @@
+# EditorConfig
+# Rename this file to .editorconfig and place into project workspace.
+# Reference: http://editorconfig.org/
+
+# Stop .editorconfig files search on this file.
+# Must be located as first property in this file.
+root = true
+
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.{js,json,yml,html,css,sass}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+[*.{js,json,yml,html,css,sass}]
+insert_final_newline = true

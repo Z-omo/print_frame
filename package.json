@@ -1,0 +1,32 @@
+{
+  "name": "print_frame",
+  "version": "0.1.0",
+  "description": "Facilitates a mechanism for printing self-contained web views via an HTML iframe element.",
+  "main": "print-frame.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "C Tester",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "ava": "^2.3.0",
+    "browser-env": "^3.2.6"
+  },
+  "ava": {
+    "files": [
+      "src/tests/*-test.js"
+    ],
+    "sources": [
+      "src/*.js"
+    ],
+    "failFast": true,
+    "verbose": true,
+    "require": [
+      "./src/tests/_babel-register.js",
+      "./src/tests/_browser-env.js"
+    ]
+  }
+}
