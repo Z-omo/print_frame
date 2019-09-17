@@ -10,14 +10,21 @@
       font-size: 88%;
       font-family: verdana, helvetica, sans-serif;
     }
-
     main {
       margin: 0 auto;
-      border-radius: 0.3rem;
-      padding: 2rem 4rem;
       max-width: 500px;
+    }
+    .example {
+      margin: 0 0 1rem;
+      border-radius: 0.3rem;
+      padding: 1rem 2rem;
       background-color: #bfd7ea;
     }
+
+    @media only screen and (min-width: 39em) {
+      .example {
+        padding: 2rem 4rem;
+    }}
     p, button {
       margin: 0 0 1.6rem;
     }
@@ -32,24 +39,40 @@
       font-weight: bold;
       text-transform: uppercase;
     }
-
     button:hover {
       background-color: #508ca4;
       color: black;
+    }
+    #elementContent {
+      background-color: ghostwhite;
+      padding: 0.5rem 1rem;
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Print Frame example</h1>
-    <p>Print button will invoke browser to print external file: print-content.html</p>
-    <button id="printContent">Print</button>
+    <h1>Print Frame examples</h1>
+
+    <div class="example">
+      <p>Print content from external file: print-content.html</p>
+      <button id="printExternal">Print</button>
+    </div>
+
+    <div class="example">
+      <p>Print content from an DOM element within this page: </p>
+      <button id="printElement">Print</button>
+      <div id="elementContent">
+        <h2>Content within a DIV element</h2>
+        <p>My content will be printed.</p>
+      </div>
+    </div>
+
   </main>
 
   <script type="module">
     import PF from "./src/print-frame.js";
 
-    const button = document.getElementById('printContent')
+    const external = document.getElementById('printExternal')
       .addEventListener('click', () => {
         fetch("print-content.html")
           .then((response) => response.text())
@@ -59,6 +82,13 @@
           console.warn(err);
         });
       });
+
+    const element = document.getElementById('printElement')
+      .addEventListener('click', () => {
+        const element = document.getElementById('elementContent');
+        PF.printThis(element);
+      });
+
   </script>
 </body>
 </html>

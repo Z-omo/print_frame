@@ -56,6 +56,8 @@ function setFrameView(view, title)
   const frame = PF.view.frame;
   if (!frame) { return; }
 
+  if (view.nodeType) { view = view.outerHTML; }
+
   frame.contentWindow.document.open();
   frame.contentWindow.document.write(view);
   if (title) { setDocumentTitle(title); }
