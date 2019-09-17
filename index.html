@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Print Frame example</title>
+  <style>
+    html, body {
+      font-size: 88%;
+      font-family: verdana, helvetica, sans-serif;
+    }
+
+    main {
+      margin: 0 auto;
+      border-radius: 0.3rem;
+      padding: 2rem 4rem;
+      max-width: 500px;
+      background-color: #bfd7ea;
+    }
+    p, button {
+      margin: 0 0 1.6rem;
+    }
+    button {
+      font-size: 1rem;
+      min-width: 120px;
+      border: none;
+      border-radius: 1rem;
+      padding: 0.4rem 1rem;
+      background-color: #91aec1;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background-color: #508ca4;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Print Frame example</h1>
+    <p>Print button will invoke browser to print external file: print-content.html</p>
+    <button id="printContent">Print</button>
+  </main>
+
+  <script type="module">
+    import PF from "./src/print-frame.js";
+
+    const button = document.getElementById('printContent')
+      .addEventListener('click', () => {
+        fetch("print-content.html")
+          .then((response) => response.text())
+          .then((html) => {
+            PF.printThis(html);
+        }).catch((err) => {
+          console.warn(err);
+        });
+      });
+  </script>
+</body>
+</html>

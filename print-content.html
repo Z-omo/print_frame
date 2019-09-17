@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Print Frame Example Content</title>
+  <style>
+    @page {
+      margin: 10mm 8.46mm;
+      orphans: 4;
+      widows: 2;
+    }
+
+    @media only print {
+      h1, h2, h3 {
+        -webkit-region-break-after: avoid;
+        page-break-after: avoid; }
+
+      .image, table, footer {
+        -webkit-region-break-inside: avoid;
+        page-break-inside: avoid; }
+
+      body {
+        font-family: verdana, helvetica, sans-serif;
+        font-size: 100%;
+        color: #77787b;
+        font-weight: 400;
+        font-size: 10pt; }
+
+      header {
+        margin: 10mm 8.46mm 0 18mm;
+      }
+
+      main {
+        margin: 0;
+        padding: 0 8.46mm 0 18mm; }
+
+      footer {
+        position: fixed;
+        bottom: 10mm;
+        left: 18mm;
+        padding: 0 8.46mm 0 0; }
+
+      .page-break {
+        page-break-after: always; }
+
+      h1 {
+        margin: 0 0 2.7rem;
+        font-size: 3.8rem;
+        line-height: 4.25rem;
+        letter-spacing: -1pt;
+        color: #508ca4;
+        font-weight: normal; }
+
+      p, ol, ul, blockquote {
+        display: block;
+        font-size: inherit;
+        line-height: inherit; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Print Frame Content</h1>
+  </header>
+  <main>
+    <p>Nonummy feugait, laoreet ad praesent consequat ullamcorper eros iusto dolore suscipit lobortis exerci eu luptatum consequatvel. Et duis qui vulputate, euismod odio dolore enim — dignissim aliquam erat amet aliquam sit velit wisi magna, in enim in ipsum feugiat lobortis. At tation in ex — amet ut diam dolor eu accumsan augue nulla feugiat nonummy.</p>
+  </main>
+  <footer>
+    <p><b>Footer content:</b> Aliquip dignissim dolore quis ipsum enim exerci vulputate nulla ipsum. Velit illum tation vulputate augue suscipit.</p>
+  </footer>
+</body>
+</html>
