@@ -45,7 +45,7 @@ const content = '<h1>My printed content</h1>';
 pFrame.printThis(content, myCallback);
 ```
 
-PrintFrame can also take a third argument to set a title string from which PrintFrame will format a URL safe name. This is useful, when the user chooses to print to PDF from the browser print dialog – the URL safe name is used as the PDF filename.
+PrintFrame can also take a third argument to set a title string from which PrintFrame will format a URL safe name. This is useful when the user chooses to print to PDF from the browser print dialog – the URL safe name is used as the PDF filename.
 
 ```javascript
 const content = '<h1>My printed content</h1>';
