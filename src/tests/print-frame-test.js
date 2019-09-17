@@ -16,10 +16,9 @@ test('PrintFrame provides public methods', t => {
 
 const content = '<h1>Print Test</h1>';
 let frame = null;
+PF.printThis(content);
 
 test('PrintFrame builds iframe element into the DOM', t => {
-  PF.printThis(content);
-
   frame = document.querySelector('#' + PF.view.frameID);
   t.is(frame.nodeName, 'IFRAME')
   t.is(PF.view.frame, frame);
@@ -32,10 +31,22 @@ test('PrintFrame hides inserted iframe from view', t => {
   t.is(style, 'position:fixed;bottom:-100%;left:-100%;');
 });
 
-test('PrintFrame sets iframe content correctly', t => {
+test('PrintFrame sets iframe string content correctly', t => {
   const frameContent = frame.contentWindow.document.body.innerHTML;
   t.is(typeof frameContent, 'string');
   t.is(frameContent, content);
+});
+
+test('PrintFrame sets iframe with DOM element content correctly', t => {
+  const div = document.createElement('div');
+  div.id = 'testDiv';
+  div.innerHTML = content;
+
+  PF.printThis(div);
+
+  const frameContent = frame.contentWindow.document.body.innerHTML;
+  t.is(typeof frameContent, 'string');
+  t.is(div.outerHTML, frameContent);
 });
 
 test('PrintFrame removes iframe element from DOM', t => {
