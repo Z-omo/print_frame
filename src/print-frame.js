@@ -6,8 +6,7 @@ const PF = {
     frameID:  'printFrame'
   },
 
-  printThis(view, callback, title)
-  {
+  printThis(view, callback, title) {
     prepareFrame();
 
     const style = 'position:fixed;bottom:-100%;left:-100%;';
@@ -26,16 +25,14 @@ const PF = {
     }, { once: true });
   },
 
-  remove()
-  {
+  remove() {
     removePrintFrame();
   }
 };
 
 export default PF;
 
-function prepareFrame(container = document.body)
-{
+function prepareFrame(container = document.body) {
   let frame = document.getElementById(PF.view.frameID);
   if (!frame) { frame = buildFrame(); }
 
@@ -43,16 +40,14 @@ function prepareFrame(container = document.body)
   PF.view.frame = frame;
 }
 
-function buildFrame()
-{
+function buildFrame() {
   const frame = document.createElement('iframe');
   frame.id = PF.view.frameID;
 
   return frame;
 }
 
-function setFrameView(view, title)
-{
+function setFrameView(view, title) {
   const frame = PF.view.frame;
   if (!frame) { return; }
 
@@ -64,12 +59,10 @@ function setFrameView(view, title)
   frame.contentWindow.document.close();
 }
 
-function callToPrint()
-{
+function callToPrint() {
   const frame = PF.view.frame;
 
-  if (!frame)
-  {
+  if (!frame) {
     throw new Error('Cannot action Print command without a prepared print frame.');
   }
 
@@ -77,25 +70,21 @@ function callToPrint()
   if (false === result) { frame.contentWindow.print(); }
 }
 
-function afterPrint()
-{
+function afterPrint() {
   // reset Chrome browser parent document title.
-  if (PF.view.chromeTitle)
-  {
+  if (PF.view.chromeTitle) {
     PF.view.frame.contentWindow.parent.document.title = PF.view.chromeTitle;
     PF.view.chromeTitle = '';
   }
 }
 
-function removePrintFrame()
-{
+function removePrintFrame() {
   prepareFrame();
   PF.view.frame.remove();
   PF.view.frame = null;
 }
 
-function formatFileSafeTitle(string)
-{
+function formatFileSafeTitle(string) {
   let safe = string.normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/&(amp;)?/g, ' and ')
@@ -105,8 +94,7 @@ function formatFileSafeTitle(string)
   return safe;
 }
 
-function setDocumentTitle(title)
-{
+function setDocumentTitle(title) {
   const frame = PF.view.frame;
   frame.contentWindow.document.title = title;
 
