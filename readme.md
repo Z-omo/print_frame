@@ -1,6 +1,6 @@
 # PrintFrame
 
-PrintFrame is a simple JavaScript module which facilitates the printing of HTML content from external files or from within a specified DOM element.
+PrintFrame is a simple JavaScript module which facilitates the printing of HTML content from external files or from within a specified DOM element. It uses an embedded iframe element to hold content, and from which the browser print mode is invoked.
 
 ## Usage
 
@@ -52,3 +52,11 @@ const content = '<h1>My printed content</h1>';
 
 pFrame.printThis(content, myCallback, 'Print content title');
 ```
+
+The embedded iframe element will remain in the page so that it can be used quickly for subsequent prints (no further setup required), however, if needed, it can be removed via the interface:
+
+```javascript
+pFrame.remove();
+```
+
+PrintFrame will remove the iframe element from the page and clear all references to the element.
