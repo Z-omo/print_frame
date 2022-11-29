@@ -1,7 +1,6 @@
+
 import test from 'ava';
-//const test = require('ava');
 import PF from '../print-frame.js';
-//const PF = require('../print-frame.js');
 
 test('PrintFrame imported is an object', t => {
   t.is(typeof PF, 'object');
