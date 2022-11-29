@@ -14,8 +14,7 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/register": "^7.6.0",
     "ava": "^5.1.0",
-    "browser-env": "^2.0.21",
-    "esm": "^3.2.25"
+    "jsdom": "^20.0.3"
   },
   "ava": {
     "files": [
@@ -24,8 +23,7 @@
     "failFast": true,
     "verbose": true,
     "require": [
-      "./src/tests/_babel-register.cjs",
-      "./src/tests/_browser-env.cjs"
+      "./src/tests/_babel-register.cjs"
     ]
   }
 }
