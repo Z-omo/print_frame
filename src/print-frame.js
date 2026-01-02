@@ -3,7 +3,8 @@
 const PF = {
 
   view: {
-    frameID:  'printFrame'
+    frameID: 'printFrame',
+    frame: null
   },
 
   printThis(view, callback, title) {
@@ -99,7 +100,7 @@ function setDocumentTitle(title) {
   frame.contentWindow.document.title = title;
 
   const chrome = /Chrome\//.test(navigator.userAgent)
-        && /Google Inc/.test(navigator.vendor);
+    && /Google Inc/.test(navigator.vendor);
   if (!chrome) { return; }
 
   PF.view.chromeTitle = frame.contentWindow.parent.document.title;
