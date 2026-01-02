@@ -8,7 +8,7 @@ import PF from '../print-frame.js';
 // Set up global objects for browser emulation:
 const dom = new JSDOM();
 global.document = dom.window.document;
-global.navigator = dom.window.navigator;
+// global.navigator = dom.window.navigator; // doesn't appear to be used.
 
 test('PrintFrame imported is an object', t => {
   t.is(typeof PF, 'object');
@@ -87,10 +87,8 @@ test('PrintFrame sets iframe document title to a URL safe filename', t => {
   });
 });
 
-function noPrintDialog(frame)
-{
+function noPrintDialog(frame) {
   const dummy = () => { return; }
   frame.contentWindow.print = dummy;
   frame.contentWindow.document.execCommand = dummy;
 }
-
